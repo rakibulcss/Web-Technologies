@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email validation</title>
+</head>
+<body>
+<form onsubmit= "return validateform()" id="emailForm">
+        <label for="email" >Email</label><br>
+        <input type="text" id="email" name="email" value="" required><br><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+    <script>
+        function validateForm()
+        {
+            const emailInput=document.getElementById('email');
+            const email=emailInput.value.trim();
+            if(email=='')
+            {
+                alert('Email cannot be empty');
+                return false;
+            }
+           const atSymbolIndex=email.indexOf('@';)
+           if(atSymbolIndex==-1 || atSymbolIndex==0 || atSymbolIndex ==email.length - 1)
+           {
+             alert('Invalid email address.');
+             return false;
+           }
+           return true;
+        
+        }
+    </script>
+
+</body>
+</html>

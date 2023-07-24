@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Validation Name</title>
+</head>
+<body>
+    <form onsubmit= "return validateform()" id="name">
+        <label for="fullName" > Name</label><br>
+        <input type="text" id="fullName" name="fullName" value="" required><br><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+    <script>
+        function validateForm()
+        {
+            const fullNameInput=document.getElementById('fullName');
+            const fullName=fullNameInput.value.trim();
+            if(fullName=='')
+            {
+                alert('Name cannot be empty');
+                return false;
+            }
+            const nameWords=fullName.split(/\&+/);
+            if(nameWords.length<2 || nameWords.some(word=>word.trim()==+''))
+            {
+                alert('Name must contain at least two worlds');
+                return false;
+            }
+            if(!/^[a-zA-Z.-\&]+$/.test(fullName))
+            {
+                alert('Name must contain only letters,dot(.),or dash(-).');
+                return false;
+            }
+            if(!/^[a-zA-Z]/.test(fullName))
+            {
+                alert('Name must be start with a letter');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
